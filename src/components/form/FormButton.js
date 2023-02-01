@@ -6,7 +6,7 @@ function FormButton() {
   const currentPath = useLocation()
 
   return (
-    <Button variant="success" className="w-100 mt-4 ">{currentPath.pathname === '/register' ? 'Register' : 'Login'}</Button>
+    <Button variant="success" className="w-100 my-4" size="lg">{currentPath.pathname === '/register' ? 'Register' : 'Login'}</Button>
   )
 }
 
