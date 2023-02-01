@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Row } from "react-bootstrap";
 import FormInput from "../../components/form/FormInput";
 import FormButton from "../../components/form/FormButton";
+import { Link } from "react-router-dom";
 
 
 function RegisterPage() {
@@ -12,6 +13,7 @@ function RegisterPage() {
           <Card.Title className="mb-4 text-center">Register Page</Card.Title>
           <FormInput />
           <FormButton />
+          <Link to={'/'}>Login</Link>
         </Card.Body>
       </Card>
     </Row>

@@ -1,12 +1,17 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import { Route, Routes } from "react-router";
 import LoginPage from "./pages/auth/LoginPage";
+import RegisterPage from "./pages/auth/RegisterPage";
 
 function App() {
   return (
     <main>
       <Container className="notes-app mt-4">
-        <LoginPage />
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
       </Container>
     </main>
   )
