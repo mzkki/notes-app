@@ -1,5 +1,5 @@
 import React from "react";
-import FormInput from "../../components/form/FormInput";
+import LoginForm from "../../components/form/LoginForm";
 import { Card, Row } from "react-bootstrap";
 import FormButton from "../../components/form/FormButton";
 import { Link } from "react-router-dom";
@@ -10,9 +10,9 @@ function LoginPage() {
       <Card style={{ width: '30rem' }} className="shadow border-0 p-4">
         <Card.Body className="my-5">
           <Card.Title className="mb-4 text-center">Login Page</Card.Title>
-          <FormInput />
+          <LoginForm />
           <FormButton />
-          <Link to={'/register'}>Register</Link>
+          <p>Belum punya akun ? <Link to={'/register'} className="text-decoration-none">Register</Link> </p>
         </Card.Body>
       </Card>
     </Row>

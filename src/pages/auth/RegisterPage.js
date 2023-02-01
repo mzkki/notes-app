@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Row } from "react-bootstrap";
-import FormInput from "../../components/form/FormInput";
+import RegisterForm from "../../components/form/RegisterForm";
 import FormButton from "../../components/form/FormButton";
 import { Link } from "react-router-dom";
 
@@ -11,9 +11,9 @@ function RegisterPage() {
       <Card style={{ width: '30rem' }} className="shadow border-0 p-4">
         <Card.Body className="my-5">
           <Card.Title className="mb-4 text-center">Register Page</Card.Title>
-          <FormInput />
+          <RegisterForm />
           <FormButton />
-          <Link to={'/'}>Login</Link>
+          <p>Sudah punya akun ? <Link to={'/'} className="text-decoration-none">Login</Link> </p>
         </Card.Body>
       </Card>
     </Row>
