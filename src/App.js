@@ -4,10 +4,12 @@ import { Route, Routes } from "react-router";
 import LoginPage from "./pages/auth/LoginPage";
 import RegisterPage from "./pages/auth/RegisterPage";
 import './css/style.css'
+import MyNavbar from "./components/etc/Navbar";
 
 function App() {
   return (
     <main>
+      <MyNavbar />
       <Container className="notes-app mt-4">
         <Routes>
           <Route path="/" element={<LoginPage />} />
