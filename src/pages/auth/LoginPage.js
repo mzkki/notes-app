@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 function LoginPage() {
   return (
-    <Row className="position-absolute top-50 start-50 translate-middle">
-      <Card style={{ width: '30rem' }} className="shadow border-0 p-4">
+    <Row className="d-flex justify-content-center">
+      <Card style={{ width: '30rem' }} className="shadow border-0 p-4 mt-5">
         <Card.Body className="my-5">
           <Card.Title className="mb-4 text-center">Login Page</Card.Title>
           <LoginForm />
