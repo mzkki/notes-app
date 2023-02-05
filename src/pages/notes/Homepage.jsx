@@ -1,9 +1,8 @@
-import React from "react";
+import React from 'react';
+import NoteList from '../../components/notes/NoteList';
 
 function Homepage() {
-  return (
-    <h1>Hello World</h1>
-  )
+  return <NoteList />;
 }
 
-export default Homepage
+export default Homepage;
