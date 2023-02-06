@@ -41,7 +41,7 @@ function App() {
   if (authedUser === null) {
     return (
       <main>
-        <MyNavbar />
+        <MyNavbar authed={authedUser} />
         <Container className="notes-app mt-4">
           <Routes>
             <Route
@@ -56,7 +56,7 @@ function App() {
   }
   return (
     <main>
-      <MyNavbar logout={onLogout} name={authedUser.name} />
+      <MyNavbar logout={onLogout} authed={authedUser} />
       <Container className="notes-app mt-4">
         <Routes>
           <Route path="/" element={<Homepage />} />

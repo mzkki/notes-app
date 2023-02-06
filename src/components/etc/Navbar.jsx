@@ -3,7 +3,7 @@ import React from 'react';
 import { Navbar, Container } from 'react-bootstrap';
 import Navlink from './Navlink';
 
-function MyNavbar({ name, logout }) {
+function MyNavbar({ logout, authed }) {
   return (
     <Navbar bg="light" className="shadow d-flex" sticky="top" expand="lg">
       <Container>
@@ -14,7 +14,7 @@ function MyNavbar({ name, logout }) {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse style={{ marginRight: '20px' }} id="basic-navbar-nav">
-          <Navlink name={name} logout={logout} />
+          <Navlink authed={authed} logout={logout} />
         </Navbar.Collapse>
       </Container>
     </Navbar>

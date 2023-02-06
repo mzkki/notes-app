@@ -1,14 +1,11 @@
 import React from 'react';
 import { Nav, Button } from 'react-bootstrap';
-import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
 import { MdDarkMode } from 'react-icons/md';
 import { RiEnglishInput } from 'react-icons/ri';
 
-function Navlink({ name, logout }) {
-  const currentPath = useLocation().pathname;
-
-  if (currentPath === '/' || currentPath === '/register') {
+function Navlink({ authed, logout }) {
+  if (authed === null) {
     return (
       <>
         <Nav
@@ -30,7 +27,7 @@ function Navlink({ name, logout }) {
   return (
     <>
       <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }}>
-        <Link className="text-decoration-none text-black m-2" to="/home">
+        <Link className="text-decoration-none text-black m-2" to="/">
           {/* <FiHome size={20} /> */}
           Home
         </Link>
@@ -42,14 +39,6 @@ function Navlink({ name, logout }) {
           {/* <BiArchive size={20} /> */}
           Add
         </Link>
-        <Button
-          variant="link"
-          className="text-decoration-none text-black m-2"
-          onClick={logout}
-        >
-          {/* <BiArchive size={20} /> */}
-          {{ name }}
-        </Button>
       </Nav>
       <Nav className="d-flex">
         <Button variant="link" className="text-decoration-none text-black">
@@ -59,6 +48,14 @@ function Navlink({ name, logout }) {
           <RiEnglishInput size={20} />
         </Button>
       </Nav>
+      <Button
+        variant="link"
+        className="text-decoration-none text-black m-2"
+        onClick={logout}
+      >
+        {/* <BiArchive size={20} /> */}
+        {authed.name}
+      </Button>
     </>
   );
 }
