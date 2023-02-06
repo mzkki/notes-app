@@ -44,7 +44,10 @@ function App() {
         <MyNavbar />
         <Container className="notes-app mt-4">
           <Routes>
-            <Route path="*" element={<LoginPage login={onLoginSuccess} />} />
+            <Route
+              path="*"
+              element={<LoginPage loginSuccess={onLoginSuccess} />}
+            />
             <Route path="/register" element={<RegisterPage />} />
           </Routes>
         </Container>
