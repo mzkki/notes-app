@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { MdDarkMode } from 'react-icons/md';
 import { RiEnglishInput } from 'react-icons/ri';
 
-function Navlink() {
+function Navlink({ name, logout }) {
   const currentPath = useLocation().pathname;
 
   if (currentPath === '/' || currentPath === '/register') {
@@ -42,6 +42,14 @@ function Navlink() {
           {/* <BiArchive size={20} /> */}
           Add
         </Link>
+        <Button
+          variant="link"
+          className="text-decoration-none text-black m-2"
+          onClick={logout}
+        >
+          {/* <BiArchive size={20} /> */}
+          {{ name }}
+        </Button>
       </Nav>
       <Nav className="d-flex">
         <Button variant="link" className="text-decoration-none text-black">
