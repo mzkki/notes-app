@@ -17,9 +17,9 @@ function App() {
     async function getData() {
       const { data } = await getUserLogged();
       setAuthedUser(data);
+      setInitializing(false);
     }
     getData();
-    setInitializing(false);
   }, []);
 
   async function onLoginSuccess({ accessToken }) {
@@ -35,7 +35,7 @@ function App() {
   }
 
   if (initializing) {
-    return 'loading...';
+    return null;
   }
 
   if (authedUser === null) {
@@ -59,7 +59,7 @@ function App() {
       <MyNavbar logout={onLogout} name={authedUser.name} />
       <Container className="notes-app mt-4">
         <Routes>
-          <Route path="/home" element={<Homepage />} />
+          <Route path="/" element={<Homepage />} />
           <Route path="/add" element={<AddNote />} />
         </Routes>
       </Container>

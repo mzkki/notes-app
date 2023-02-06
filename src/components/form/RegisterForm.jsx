@@ -1,29 +1,60 @@
-import React from "react";
-import { Form, FloatingLabel } from "react-bootstrap";
-import useInput from "../../hooks/useInput";
+import React from 'react';
+import { Form, FloatingLabel } from 'react-bootstrap';
+import useInput from '../../hooks/useInput';
+import FormButton from './FormButton';
 
-function LoginForm() {
-  const [email, handleEmailChange] = useInput('')
-  const [password, handlePasswordChange] = useInput('')
-  const [confirmPassword, handleConfirmPasswordChange] = useInput('')
+function RegisterForm({ register }) {
+  const [email, setEmail] = useInput('');
+  const [password, setPassword] = useInput('');
+  const [name, setName] = useInput('');
+
+  function onSubmitHandler(event) {
+    event.preventDefault();
+
+    register({ email, name, password });
+  }
 
   return (
-    <>
+    <form onSubmit={onSubmitHandler}>
       <FloatingLabel
-        controlId="floatingInput"
+        controlId="floatingInputEmail"
         label="Email address"
         className="mb-3"
       >
-        <Form.Control type="email" placeholder="name@example.com" value={email} onChange={handleEmailChange} />
+        <Form.Control
+          type="email"
+          placeholder="name@example.com"
+          value={email}
+          onChange={setEmail}
+        />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingPassword1" label="Password" className="mb-3">
-        <Form.Control type="password" placeholder="Password" value={password} onChange={handlePasswordChange} />
+      <FloatingLabel
+        controlId="floatingInputName"
+        label="Name"
+        className="mb-3"
+      >
+        <Form.Control
+          type="text"
+          placeholder="name"
+          value={name}
+          onChange={setName}
+        />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingPassword2" label="Confirm Password">
-        <Form.Control type="password" placeholder="Password" value={confirmPassword} onChange={handleConfirmPasswordChange} />
+      <FloatingLabel
+        controlId="floatingPassword1"
+        label="Password"
+        className="mb-3"
+      >
+        <Form.Control
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={setPassword}
+        />
       </FloatingLabel>
-    </>
-  )
+      <FormButton />
+    </form>
+  );
 }
 
-export default LoginForm
+export default RegisterForm;

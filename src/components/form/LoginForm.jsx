@@ -3,7 +3,7 @@ import { Form, FloatingLabel } from 'react-bootstrap';
 import useInput from '../../hooks/useInput';
 import FormButton from './FormButton';
 
-function LoginForm(login) {
+function LoginForm({ login }) {
   const [email, handleEmailChange] = useInput('');
   const [password, handlePasswordChange] = useInput('');
 
