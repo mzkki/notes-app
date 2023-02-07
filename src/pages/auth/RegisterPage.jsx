@@ -22,7 +22,7 @@ function RegisterPage() {
           <Card.Title className="mb-4 text-center">Register Page</Card.Title>
           <RegisterForm register={onRegisterHandler} />
           <p>
-            Sudah punya akun ?
+            Already have an account ?
             <Link to={'/'} className="text-decoration-none">
               Login
             </Link>

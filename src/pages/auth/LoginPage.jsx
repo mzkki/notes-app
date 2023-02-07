@@ -17,10 +17,10 @@ function LoginPage({ loginSuccess }) {
     <Row className="d-flex justify-content-center">
       <Card style={{ width: '30rem' }} className="shadow border-0 p-4 mt-5">
         <Card.Body className="my-5">
-          <Card.Title className="mb-4 text-center">Login Page</Card.Title>
+          <Card.Title className="mb-4 text-center">Login</Card.Title>
           <LoginForm login={onLogin} />
           <p>
-            Belum punya akun ?{' '}
+            Don't have account yet ?{' '}
             <Link to={'/register'} className="text-decoration-none">
               Register
             </Link>{' '}
