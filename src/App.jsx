@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import { Route, Routes } from 'react-router';
+import { Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import './css/style.css';
@@ -8,6 +8,7 @@ import MyNavbar from './components/etc/Navbar';
 import Homepage from './pages/notes/Homepage';
 import AddNote from './pages/notes/AddNote';
 import { getUserLogged, putAccessToken } from './utils/api';
+import DetailPage from './pages/notes/DetailPage';
 
 function App() {
   const [authedUser, setAuthedUser] = React.useState(null);
@@ -61,6 +62,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/archived" element={<Homepage />} />
+          <Route path="/note/:id" element={<DetailPage />} />
           <Route path="/add" element={<AddNote />} />
         </Routes>
       </Container>

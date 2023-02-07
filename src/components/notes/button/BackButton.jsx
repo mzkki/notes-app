@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function BackButton() {
   return (
-    <Link>
+    <Link to="/">
       <Button variant="outline-danger">Go Back !</Button>
     </Link>
   );

@@ -6,7 +6,7 @@ function NoteHeaderCard({ title, id, createdAt }) {
   return (
     <div className="note-item__header">
       <h2 className="note-item__title">
-        <Link to="#" className="text-decoration-none text-black">
+        <Link to={`/note/${id}`} className="text-decoration-none text-black">
           {title}
         </Link>
       </h2>

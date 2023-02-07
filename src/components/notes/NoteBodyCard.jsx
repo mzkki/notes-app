@@ -5,7 +5,7 @@ function NoteBodyCard({ body, id }) {
   return (
     <div className="note-item__content">
       <div className="note-item__body mt-2">
-        <Link to="#" className="text-decoration-none text-black">
+        <Link to={`/note/${id}`} className="text-decoration-none text-black">
           {body}
         </Link>
       </div>
