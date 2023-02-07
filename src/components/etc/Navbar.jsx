@@ -5,7 +5,7 @@ import Navlink from './Navlink';
 
 function MyNavbar({ logout, authed }) {
   return (
-    <Navbar bg="light" className="shadow d-flex" sticky="top" expand="lg">
+    <Navbar bg="light" className="shadow d-flex" sticky="top" expand="md">
       <Container>
         <Navbar.Brand>
           <Link to="/home" className="text-decoration-none text-dark">

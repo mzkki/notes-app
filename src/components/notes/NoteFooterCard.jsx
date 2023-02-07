@@ -9,11 +9,11 @@ function NoteFooterCard() {
     <div className="note-item__footer">
       <Container fluid="sm" className="mt-4">
         <Row>
-          <Col md={4} className="mt-2">
+          <Col lg={4} className="mt-2">
             <NoteArchiveButton />
             <NoteDeleteButton />
           </Col>
-          <Col md={{ span: 4, offset: 4 }} className="mt-2">
+          <Col lg={{ span: 4, offset: 4 }} className="mt-2">
             <BackButton />
           </Col>
         </Row>
