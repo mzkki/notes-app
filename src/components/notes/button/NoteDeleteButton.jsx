@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-function NoteDeleteButton() {
+function NoteDeleteButton({ onDelete, id }) {
   return (
     <Button variant="danger" className="mx-2">
       Delete

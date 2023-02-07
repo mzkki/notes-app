@@ -29,7 +29,7 @@ function Navlink({ authed, logout }) {
       <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }}>
         <Link className="text-decoration-none text-black m-2" to="/">
           {/* <FiHome size={20} /> */}
-          Home
+          Notes
         </Link>
         <Link className="text-decoration-none text-black m-2" to="/archived">
           {/* <FiPlusCircle size={20} /> */}

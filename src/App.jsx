@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import './css/style.css';
+import './css/toast.css';
 import MyNavbar from './components/etc/Navbar';
 import Homepage from './pages/notes/Homepage';
 import AddNote from './pages/notes/AddNote';
