@@ -1,14 +1,28 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { showFormattedDate } from '../../utils/api';
 import NoteItemCard from './NoteItemCard';
 
-function NoteList() {
+function NoteList({ notes, query }) {
+  const filteredQuery = notes.filter((note) =>
+    note.title.toLowerCase().includes(query)
+  );
+
   return (
     <Container>
       <Row>
-        <Col sm={4} className="my-2">
-          <NoteItemCard />
-        </Col>
+        {filteredQuery.length > 0 ? (
+          filteredQuery.map((note) => (
+            <Col sm={4} className="my-2" key={note.id}>
+              <NoteItemCard
+                {...note}
+                createdAt={showFormattedDate(note.createdAt)}
+              />
+            </Col>
+          ))
+        ) : (
+          <div className="note-list__empty">Tidak ada catatan.</div>
+        )}
       </Row>
     </Container>
   );

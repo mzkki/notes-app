@@ -60,6 +60,7 @@ function App() {
       <Container className="notes-app mt-4">
         <Routes>
           <Route path="/" element={<Homepage />} />
+          <Route path="/archived" element={<Homepage />} />
           <Route path="/add" element={<AddNote />} />
         </Routes>
       </Container>

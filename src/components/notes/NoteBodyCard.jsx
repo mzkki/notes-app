@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function NoteBodyCard() {
+function NoteBodyCard({ body, id }) {
   return (
     <div className="note-item__content">
       <div className="note-item__body mt-2">
         <Link to="#" className="text-decoration-none text-black">
-          body
+          {body}
         </Link>
       </div>
     </div>
