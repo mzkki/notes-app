@@ -4,6 +4,7 @@ import { useLocation } from 'react-router';
 
 function SearchNote({ keyword, changeKeyword }) {
   const currentPath = useLocation().pathname;
+
   return (
     <Navbar>
       <Container>
@@ -17,7 +18,7 @@ function SearchNote({ keyword, changeKeyword }) {
               placeholder="Search"
               className="me-2 shadow border-0"
               value={keyword}
-              onChange={changeKeyword}
+              onChange={(event) => changeKeyword(event.target.value)}
             />
           </Form>
         </Navbar.Collapse>

@@ -15,7 +15,7 @@ function Homepage() {
 
   function onKeywordChange(keyword) {
     setKeyword(keyword);
-    setSearchParams(keyword);
+    setSearchParams({ keyword });
   }
 
   React.useEffect(() => {
