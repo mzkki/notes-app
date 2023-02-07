@@ -32,16 +32,16 @@ function Homepage() {
     } else if (currentPath === '/archived') {
       getArchive();
     }
+
+    return () => {
+      setNotes(null);
+    };
   }, [currentPath]);
 
   return (
     <>
       <SearchNote keyword={keyword} changeKeyword={onKeywordChange} />
-      {notes ? (
-        <NoteList notes={notes} query={keyword} />
-      ) : (
-        <p>Tidak ada data</p>
-      )}
+      {notes ? <NoteList notes={notes} query={keyword} /> : <p>Loading...</p>}
     </>
   );
 }
