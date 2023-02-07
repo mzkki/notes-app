@@ -15,6 +15,10 @@ function DetailPage() {
     getDetailNote();
   }, [id]);
 
+  if (note.length === 0) {
+    return 'Loading...';
+  }
+
   return <NoteDetail {...note} createdAt={showFormattedDate(note.createdAt)} />;
 }
 
