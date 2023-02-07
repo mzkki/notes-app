@@ -13,7 +13,7 @@ function NoteList({ notes, query }) {
       <Row>
         {filteredQuery.length > 0 ? (
           filteredQuery.map((note) => (
-            <Col sm={4} className="my-2" key={note.id}>
+            <Col md={4} className="my-2" key={note.id}>
               <NoteItemCard
                 {...note}
                 createdAt={showFormattedDate(note.createdAt)}
