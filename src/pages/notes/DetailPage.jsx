@@ -47,10 +47,10 @@ function DetailPage() {
 
   async function onArchiveHandler(id) {
     if (note.archived) {
-      unarchiveNote(id);
+      await unarchiveNote(id);
       navigate('/');
     } else {
-      archiveNote(id);
+      await archiveNote(id);
       navigate('/archived');
     }
     const Toast = Swal.mixin({
