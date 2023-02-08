@@ -23,6 +23,8 @@ function NoteInput({ onAddHandler }) {
     setBody(parsedBody);
   }
 
+  console.log(body);
+
   async function onSubmitHandler(event) {
     event.preventDefault();
     if (title === '' && body === '') {
@@ -41,7 +43,7 @@ function NoteInput({ onAddHandler }) {
       });
       return false;
     }
-    if (body === '') {
+    if (body === '<p></p>') {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',

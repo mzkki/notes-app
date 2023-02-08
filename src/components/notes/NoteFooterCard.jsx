@@ -18,7 +18,7 @@ function NoteFooterCard({ archived, onArchive, onDelete, id }) {
             <NoteDeleteButton onDelete={onDelete} id={id} />
           </Col>
           <Col lg={{ span: 4, offset: 4 }} className="mt-2">
-            <BackButton />
+            <BackButton isArchive={archived} />
           </Col>
         </Row>
       </Container>
