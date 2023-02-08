@@ -28,7 +28,7 @@ function DetailPage() {
   }
 
   async function onDeleteHandler(id) {
-    await Swal.fire({
+    Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
       icon: 'warning',
@@ -38,11 +38,15 @@ function DetailPage() {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
-        deleteNote(id);
-        navigate('/');
-        Swal.fire('Deleted!', 'Catatan kamu berhasil dihapus!', 'success');
+        delNote(id);
       }
     });
+  }
+
+  async function delNote(id) {
+    await deleteNote(id);
+    navigate('/');
+    Swal.fire('Deleted!', 'Catatan kamu berhasil dihapus!', 'success');
   }
 
   async function onArchiveHandler(id) {
