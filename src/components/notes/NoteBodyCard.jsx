@@ -1,6 +1,7 @@
 import React from 'react';
 import parser from 'html-react-parser';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function NoteBodyCard({ body, id }) {
   return (
@@ -13,5 +14,10 @@ function NoteBodyCard({ body, id }) {
     </div>
   );
 }
+
+NoteBodyCard.propTypes = {
+  body: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+};
 
 export default NoteBodyCard;

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import { Navbar, Container } from 'react-bootstrap';
 import Navlink from './Navlink';
+import PropTypes, { string } from 'prop-types';
 
 function MyNavbar({ logout, authed }) {
   return (
@@ -20,5 +21,10 @@ function MyNavbar({ logout, authed }) {
     </Navbar>
   );
 }
+
+MyNavbar.propTypes = {
+  logout: PropTypes.func,
+  authed: PropTypes.objectOf(string),
+};
 
 export default MyNavbar;

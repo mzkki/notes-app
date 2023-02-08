@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import BackButton from './button/BackButton';
 import NoteArchiveButton from './button/NoteArchiveButton';
 import NoteDeleteButton from './button/NoteDeleteButton';
+import PropTypes from 'prop-types';
 
 function NoteFooterCard({ archived, onArchive, onDelete, id }) {
   return (
@@ -25,5 +26,12 @@ function NoteFooterCard({ archived, onArchive, onDelete, id }) {
     </div>
   );
 }
+
+NoteFooterCard.propTypes = {
+  archived: PropTypes.bool.isRequired,
+  onArchive: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+};
 
 export default NoteFooterCard;

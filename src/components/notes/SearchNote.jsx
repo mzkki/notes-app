@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Form, Navbar } from 'react-bootstrap';
 import { useLocation } from 'react-router';
+import PropTypes from 'prop-types';
 
 function SearchNote({ keyword, changeKeyword }) {
   const currentPath = useLocation().pathname;
@@ -26,5 +27,10 @@ function SearchNote({ keyword, changeKeyword }) {
     </Navbar>
   );
 }
+
+SearchNote.propTypes = {
+  keyword: PropTypes.string.isRequired,
+  changeKeyword: PropTypes.func.isRequired,
+};
 
 export default SearchNote;

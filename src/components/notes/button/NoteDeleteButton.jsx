@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 function NoteDeleteButton({ onDelete, id }) {
   return (
@@ -8,5 +9,10 @@ function NoteDeleteButton({ onDelete, id }) {
     </Button>
   );
 }
+
+NoteDeleteButton.propTypes = {
+  onDelete: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+};
 
 export default NoteDeleteButton;

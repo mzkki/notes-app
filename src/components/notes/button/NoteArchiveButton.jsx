@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 function NoteArchiveButton({ archived, onArchive, id }) {
   return (
@@ -8,5 +9,11 @@ function NoteArchiveButton({ archived, onArchive, id }) {
     </Button>
   );
 }
+
+NoteArchiveButton.propTypes = {
+  archived: PropTypes.bool.isRequired,
+  onArchive: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+};
 
 export default NoteArchiveButton;

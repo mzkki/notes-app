@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, FloatingLabel } from 'react-bootstrap';
 import useInput from '../../hooks/useInput';
 import FormButton from './FormButton';
+import PropTypes from 'prop-types';
 
 function RegisterForm({ register }) {
   const [email, setEmail] = useInput('');
@@ -56,5 +57,9 @@ function RegisterForm({ register }) {
     </form>
   );
 }
+
+RegisterForm.propTypes = {
+  register: PropTypes.func.isRequired,
+};
 
 export default RegisterForm;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { showFormattedDate } from '../../utils/api';
 import NoteItemCard from './NoteItemCard';
+import PropTypes from 'prop-types';
 
 function NoteList({ notes, query }) {
   const filteredQuery = notes.filter((note) =>
@@ -27,5 +28,10 @@ function NoteList({ notes, query }) {
     </Container>
   );
 }
+
+NoteList.propTypes = {
+  notes: PropTypes.array.isRequired,
+  query: PropTypes.string.isRequired,
+};
 
 export default NoteList;

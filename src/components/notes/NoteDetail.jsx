@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Form, Card } from 'react-bootstrap';
 import NoteFooterCard from './NoteFooterCard';
 import parser from 'html-react-parser';
+import PropTypes from 'prop-types';
 
 function NoteDetail({
   id,
@@ -28,5 +29,15 @@ function NoteDetail({
     </Container>
   );
 }
+
+NoteDetail.propTypes = {
+  id: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  archived: PropTypes.bool.isRequired,
+  onArchive: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
 
 export default NoteDetail;

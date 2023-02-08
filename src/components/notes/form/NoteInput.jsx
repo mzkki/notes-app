@@ -8,6 +8,7 @@ import MaxLength from './MaxLength';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import Swal from 'sweetalert2';
 import NoteInputHeader from './NoteInputHeader';
+import PropTypes from 'prop-types';
 
 function NoteInput({ onAddHandler }) {
   const [title, setTitle] = React.useState('');
@@ -22,8 +23,6 @@ function NoteInput({ onAddHandler }) {
     const parsedBody = convertToHTML(body.getCurrentContent());
     setBody(parsedBody);
   }
-
-  console.log(body);
 
   async function onSubmitHandler(event) {
     event.preventDefault();
@@ -82,5 +81,9 @@ function NoteInput({ onAddHandler }) {
     </Card>
   );
 }
+
+NoteInput.propTypes = {
+  onAddHandler: PropTypes.func.isRequired,
+};
 
 export default NoteInput;

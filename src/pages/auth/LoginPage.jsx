@@ -3,6 +3,7 @@ import LoginForm from '../../components/form/LoginForm';
 import { Card, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { login } from '../../utils/api';
+import PropTypes from 'prop-types';
 
 function LoginPage({ loginSuccess }) {
   async function onLogin({ email, password }) {
@@ -30,5 +31,9 @@ function LoginPage({ loginSuccess }) {
     </Row>
   );
 }
+
+LoginPage.propTypes = {
+  loginSuccess: PropTypes.func.isRequired,
+};
 
 export default LoginPage;

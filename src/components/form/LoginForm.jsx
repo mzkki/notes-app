@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, FloatingLabel } from 'react-bootstrap';
 import useInput from '../../hooks/useInput';
 import FormButton from './FormButton';
+import PropTypes from 'prop-types';
 
 function LoginForm({ login }) {
   const [email, handleEmailChange] = useInput('');
@@ -12,6 +13,7 @@ function LoginForm({ login }) {
 
     login({ email, password });
   }
+
   return (
     <form onSubmit={onSubmitHandler}>
       <FloatingLabel
@@ -38,5 +40,9 @@ function LoginForm({ login }) {
     </form>
   );
 }
+
+LoginForm.propTypes = {
+  login: PropTypes.func.isRequired,
+};
 
 export default LoginForm;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function NoteHeaderCard({ title, id, createdAt }) {
   return (
@@ -16,5 +17,11 @@ function NoteHeaderCard({ title, id, createdAt }) {
     </div>
   );
 }
+
+NoteHeaderCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+};
 
 export default NoteHeaderCard;

@@ -3,6 +3,7 @@ import { Nav, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { MdDarkMode } from 'react-icons/md';
 import { RiEnglishInput } from 'react-icons/ri';
+import PropTypes, { string } from 'prop-types';
 
 function Navlink({ authed, logout }) {
   if (authed === null) {
@@ -59,5 +60,10 @@ function Navlink({ authed, logout }) {
     </>
   );
 }
+
+Navlink.propTypes = {
+  authed: PropTypes.objectOf(string),
+  logout: PropTypes.func,
+};
 
 export default Navlink;

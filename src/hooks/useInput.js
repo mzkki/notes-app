@@ -8,7 +8,7 @@ function useInput(defaultValue) {
 }
 
 useInput.propTypes = {
-  defaultValue: PropTypes.string
+  defaultValue: PropTypes.string.isRequired
 }
 
 export default useInput;

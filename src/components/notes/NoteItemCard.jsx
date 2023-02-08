@@ -2,6 +2,7 @@ import React from 'react';
 import { Card } from 'react-bootstrap';
 import NoteBodyCard from './NoteBodyCard';
 import NoteHeaderCard from './NoteHeaderCard';
+import PropTypes from 'prop-types';
 
 function NoteItemCard({ id, title, createdAt, body }) {
   return (
@@ -11,5 +12,12 @@ function NoteItemCard({ id, title, createdAt, body }) {
     </Card>
   );
 }
+
+NoteItemCard.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+};
 
 export default NoteItemCard;
