@@ -9,7 +9,7 @@ function MyNavbar({ logout, authed }) {
     <Navbar bg="light" className="shadow d-flex" sticky="top" expand="md">
       <Container>
         <Navbar.Brand>
-          <Link to="/home" className="text-decoration-none text-dark">
+          <Link to="/" className="text-decoration-none text-dark">
             <h4>Notes App</h4>
           </Link>
         </Navbar.Brand>

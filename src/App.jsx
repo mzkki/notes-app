@@ -10,6 +10,7 @@ import Homepage from './pages/notes/Homepage';
 import AddNote from './pages/notes/AddNote';
 import { getUserLogged, putAccessToken } from './utils/api';
 import DetailPage from './pages/notes/DetailPage';
+import NotFound from './pages/etc/NotFound';
 
 function App() {
   const [authedUser, setAuthedUser] = React.useState(null);
@@ -65,6 +66,7 @@ function App() {
           <Route path="/archived" element={<Homepage />} />
           <Route path="/note/:id" element={<DetailPage />} />
           <Route path="/add" element={<AddNote />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Container>
     </main>
