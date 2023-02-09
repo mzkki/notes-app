@@ -5,12 +5,61 @@ import { MdDarkMode } from 'react-icons/md';
 import { HiLanguage } from 'react-icons/hi2';
 import PropTypes, { string } from 'prop-types';
 import LocaleContext from '../../context/LocaleContext';
+import Swal from 'sweetalert2';
 
 function Navlink({ authed, logout }) {
   const { locale, toggleLocale } = React.useContext(LocaleContext);
 
   let inactiveClassName = 'text-decoration-none text-black m-2 text-muted';
   let activeClassName = 'text-decoration-none text-black m-2 ';
+
+  function confirmLogout() {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger',
+      },
+      buttonsStyling: true,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title:
+          locale === 'id'
+            ? 'Yakin ingin keluar ? '
+            : 'Are you sure to logout ? ',
+        text:
+          locale === 'id'
+            ? 'Kamu dapat masuk kembali nanti.'
+            : 'You can log back in later.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: locale === 'id' ? 'Ya, Keluar!' : 'Yes, Log out!',
+        cancelButtonText: locale === 'id' ? 'Tidak, Batalkan!' : 'No, cancel!',
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          logout();
+          swalWithBootstrapButtons.fire(
+            locale === 'id' ? 'Berhasil Keluar' : 'Logged out!',
+            locale === 'id'
+              ? 'Kamu berhasil logout'
+              : 'You have successfully logged out ',
+            'success'
+          );
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            locale === 'id' ? 'Dibatalkan' : 'Cancelled',
+            locale === 'id' ? 'Kamu tidak jadi keluar!' : "You don't come out",
+            'error'
+          );
+        }
+      });
+  }
 
   if (authed === null) {
     return (
@@ -81,7 +130,7 @@ function Navlink({ authed, logout }) {
       <Button
         variant="link"
         className="text-decoration-none text-black m-2"
-        onClick={logout}
+        onClick={confirmLogout}
       >
         {/* <BiArchive size={20} /> */}
         {authed.name}

@@ -38,6 +38,7 @@ function DetailPage() {
           : "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
+      cancelButtonText: locale === 'id' ? 'Batan' : 'Cancel',
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: locale === 'id' ? 'Ya, Hapus!' : 'Yes, delete it!',
