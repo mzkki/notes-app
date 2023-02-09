@@ -3,8 +3,11 @@ import { useNavigate } from 'react-router';
 import NoteInput from '../../components/notes/form/NoteInput';
 import { addNote } from '../../utils/api';
 import Swal from 'sweetalert2';
+import LocaleContext from '../../context/LocaleContext';
 
 function AddNote() {
+  const { locale } = React.useContext(LocaleContext);
+
   const navigate = useNavigate();
 
   async function onAddNoteHandler(note) {
@@ -23,7 +26,7 @@ function AddNote() {
     });
     await Toast.fire({
       icon: 'success',
-      title: 'Success',
+      title: locale === 'id' ? 'Berhasil' : 'Success',
     });
   }
   return <NoteInput onAddHandler={onAddNoteHandler} />;

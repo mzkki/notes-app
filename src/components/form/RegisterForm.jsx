@@ -3,11 +3,14 @@ import { Form, FloatingLabel } from 'react-bootstrap';
 import useInput from '../../hooks/useInput';
 import FormButton from './FormButton';
 import PropTypes from 'prop-types';
+import LocaleContext from '../../context/LocaleContext';
 
 function RegisterForm({ register }) {
   const [email, setEmail] = useInput('');
   const [password, setPassword] = useInput('');
   const [name, setName] = useInput('');
+
+  const { locale } = React.useContext(LocaleContext);
 
   function onSubmitHandler(event) {
     event.preventDefault();
@@ -19,7 +22,7 @@ function RegisterForm({ register }) {
     <form onSubmit={onSubmitHandler}>
       <FloatingLabel
         controlId="floatingInputEmail"
-        label="Email address"
+        label={locale === 'id' ? 'Alamat Surel' : 'Email Address'}
         className="mb-3"
       >
         <Form.Control
@@ -31,7 +34,7 @@ function RegisterForm({ register }) {
       </FloatingLabel>
       <FloatingLabel
         controlId="floatingInputName"
-        label="Name"
+        label={locale === 'id' ? 'Nama Lengkap' : 'Full Name'}
         className="mb-3"
       >
         <Form.Control
@@ -43,7 +46,7 @@ function RegisterForm({ register }) {
       </FloatingLabel>
       <FloatingLabel
         controlId="floatingPassword1"
-        label="Password"
+        label={locale === 'id' ? 'Kata Sandi' : 'Password'}
         className="mb-3"
       >
         <Form.Control

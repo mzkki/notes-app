@@ -3,14 +3,17 @@ import React from 'react';
 import { Navbar, Container } from 'react-bootstrap';
 import Navlink from './Navlink';
 import PropTypes, { string } from 'prop-types';
+import LocaleContext from '../../context/LocaleContext';
 
 function MyNavbar({ logout, authed }) {
+  const { locale } = React.useContext(LocaleContext);
+
   return (
     <Navbar bg="light" className="shadow d-flex" sticky="top" expand="md">
       <Container>
         <Navbar.Brand>
           <Link to="/" className="text-decoration-none text-dark">
-            <h4>Notes App</h4>
+            <h4>{locale === 'id' ? 'Aplikasi Catatan' : 'Notes App'}</h4>
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

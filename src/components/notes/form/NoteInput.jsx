@@ -9,8 +9,11 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import Swal from 'sweetalert2';
 import NoteInputHeader from './NoteInputHeader';
 import PropTypes from 'prop-types';
+import LocaleContext from '../../../context/LocaleContext';
 
 function NoteInput({ onAddHandler }) {
+  const { locale } = React.useContext(LocaleContext);
+
   const [title, setTitle] = React.useState('');
   const [body, setBody] = React.useState(EditorState.createEmpty());
 
@@ -30,7 +33,10 @@ function NoteInput({ onAddHandler }) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Judul dan Body Catatan tidak boleh kosong',
+        text:
+          locale === 'id'
+            ? 'Judul dan Body Catatan tidak boleh kosong'
+            : "Title and Note Body can't empty",
       });
       return false;
     }
@@ -38,7 +44,10 @@ function NoteInput({ onAddHandler }) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Judul Catatan tidak boleh kosong',
+        text:
+          locale === 'id'
+            ? 'Judul Catatan tidak boleh kosong'
+            : "Note Title can't empty",
       });
       return false;
     }
@@ -46,7 +55,10 @@ function NoteInput({ onAddHandler }) {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'Body Catatan tidak boleh kosong',
+        text:
+          locale === 'id'
+            ? 'Body Catatan tidak boleh kosong'
+            : "Note Body can't empty",
       });
       return false;
     }
@@ -59,7 +71,10 @@ function NoteInput({ onAddHandler }) {
     <Card className="border-0 shadow mb-3 p-3">
       <NoteInputHeader />
       <form className="note-input" onSubmit={onSubmitHandler}>
-        <FloatingLabel controlId="floatingInput" label="Judul Catatan">
+        <FloatingLabel
+          controlId="floatingInput"
+          label={locale === 'id' ? 'Judul Catatan' : 'Note Title'}
+        >
           <Form.Control
             type="text"
             className="border-0 shadow"

@@ -2,8 +2,11 @@ import React from 'react';
 import { Container, Form, Navbar } from 'react-bootstrap';
 import { useLocation } from 'react-router';
 import PropTypes from 'prop-types';
+import LocaleContext from '../../context/LocaleContext';
 
 function SearchNote({ keyword, changeKeyword }) {
+  const { locale } = React.useContext(LocaleContext);
+
   const currentPath = useLocation().pathname;
 
   return (
@@ -16,7 +19,7 @@ function SearchNote({ keyword, changeKeyword }) {
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Search"
+              placeholder={locale === 'id' ? 'Cari Catatan' : 'Search Note'}
               className="me-2 shadow border-0"
               value={keyword}
               onChange={(event) => changeKeyword(event.target.value)}

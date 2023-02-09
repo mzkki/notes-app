@@ -9,8 +9,10 @@ import {
   unarchiveNote,
 } from '../../utils/api';
 import Swal from 'sweetalert2';
+import LocaleContext from '../../context/LocaleContext';
 
 function DetailPage() {
+  const { locale } = React.useContext(LocaleContext);
   const { id } = useParams();
   const [note, setNote] = React.useState([]);
   const navigate = useNavigate();
@@ -24,18 +26,21 @@ function DetailPage() {
   }, [id]);
 
   if (note.length === 0) {
-    return 'Loading...';
+    return locale === 'id' ? 'Memuat catatan...' : 'Loading....';
   }
 
   async function onDeleteHandler(id) {
     Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
+      title: locale === 'id' ? 'Yakin ingin menghapus ?' : 'Are you sure?',
+      text:
+        locale === 'id'
+          ? 'Kamu tidak dapat mengembalikan catatan kembali!'
+          : "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, delete it!',
+      confirmButtonText: locale === 'id' ? 'Ya, Hapus!' : 'Yes, delete it!',
     }).then((result) => {
       if (result.isConfirmed) {
         delNote(id);
@@ -46,7 +51,13 @@ function DetailPage() {
   async function delNote(id) {
     await deleteNote(id);
     navigate('/');
-    Swal.fire('Deleted!', 'Catatan kamu berhasil dihapus!', 'success');
+    Swal.fire(
+      'Deleted!',
+      locale === 'id'
+        ? 'Catatan kamu berhasil dihapus!'
+        : 'Your note has deleted!',
+      'success'
+    );
   }
 
   async function onArchiveHandler(id) {
@@ -70,7 +81,7 @@ function DetailPage() {
     });
     await Toast.fire({
       icon: 'success',
-      title: 'Success',
+      title: locale === 'id' ? 'Berhasil' : 'Success',
     });
   }
 

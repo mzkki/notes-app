@@ -2,9 +2,11 @@ import React from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import NoteList from '../../components/notes/NoteList';
 import SearchNote from '../../components/notes/SearchNote';
+import LocaleContext from '../../context/LocaleContext';
 import { getActiveNotes, getArchivedNotes } from '../../utils/api';
 
 function Homepage() {
+  const { locale } = React.useContext(LocaleContext);
   const [searchParams, setSearchParams] = useSearchParams();
   const [notes, setNotes] = React.useState([]);
   const [keyword, setKeyword] = React.useState(() => {
@@ -41,7 +43,11 @@ function Homepage() {
   return (
     <>
       <SearchNote keyword={keyword} changeKeyword={onKeywordChange} />
-      {notes ? <NoteList notes={notes} query={keyword} /> : <p>Loading...</p>}
+      {notes ? (
+        <NoteList notes={notes} query={keyword} />
+      ) : (
+        <p>{locale === 'id' ? 'Memuat...' : 'Loading...'}</p>
+      )}
     </>
   );
 }

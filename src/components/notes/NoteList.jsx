@@ -3,8 +3,11 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { showFormattedDate } from '../../utils/api';
 import NoteItemCard from './NoteItemCard';
 import PropTypes from 'prop-types';
+import LocaleContext from '../../context/LocaleContext';
 
 function NoteList({ notes, query }) {
+  const { locale } = React.useContext(LocaleContext);
+
   const filteredQuery = notes.filter((note) =>
     note.title.toLowerCase().includes(query)
   );
@@ -22,7 +25,9 @@ function NoteList({ notes, query }) {
             </Col>
           ))
         ) : (
-          <div className="note-list__empty">Tidak ada catatan.</div>
+          <div className="note-list__empty">
+            {locale === 'id' ? 'Tidak ada catatan' : 'No Note'}
+          </div>
         )}
       </Row>
     </Container>

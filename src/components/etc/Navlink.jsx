@@ -1,11 +1,17 @@
 import React from 'react';
 import { Nav, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { MdDarkMode } from 'react-icons/md';
-import { RiEnglishInput } from 'react-icons/ri';
+import { HiLanguage } from 'react-icons/hi2';
 import PropTypes, { string } from 'prop-types';
+import LocaleContext from '../../context/LocaleContext';
 
 function Navlink({ authed, logout }) {
+  const { locale, toggleLocale } = React.useContext(LocaleContext);
+
+  let inactiveClassName = 'text-decoration-none text-black m-2 text-muted';
+  let activeClassName = 'text-decoration-none text-black m-2 ';
+
   if (authed === null) {
     return (
       <>
@@ -17,8 +23,12 @@ function Navlink({ authed, logout }) {
           <Button variant="link" className="text-decoration-none text-black">
             <MdDarkMode size={20} />
           </Button>
-          <Button variant="link" className="text-decoration-none text-black">
-            <RiEnglishInput size={20} />
+          <Button
+            variant="link"
+            onClick={toggleLocale}
+            className="text-decoration-none text-black"
+          >
+            <HiLanguage size={20} />
           </Button>
         </Nav>
       </>
@@ -28,25 +38,44 @@ function Navlink({ authed, logout }) {
   return (
     <>
       <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }}>
-        <Link className="text-decoration-none text-black m-2" to="/">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? activeClassName : inactiveClassName
+          }
+          to="/"
+        >
           {/* <FiHome size={20} /> */}
-          Notes
-        </Link>
-        <Link className="text-decoration-none text-black m-2" to="/archived">
+          {locale === 'id' ? 'Catatan' : 'Notes'}
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? activeClassName : inactiveClassName
+          }
+          to="/archived"
+        >
           {/* <FiPlusCircle size={20} /> */}
-          Archived
-        </Link>
-        <Link className="text-decoration-none text-black m-2" to="/add">
+          {locale === 'id' ? 'Terarsip' : 'Archived'}
+        </NavLink>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? activeClassName : inactiveClassName
+          }
+          to="/add"
+        >
           {/* <BiArchive size={20} /> */}
-          Add
-        </Link>
+          {locale === 'id' ? 'Tambah Catatan' : 'Add Note'}
+        </NavLink>
       </Nav>
       <Nav className="d-flex">
         <Button variant="link" className="text-decoration-none text-black">
           <MdDarkMode size={20} />
         </Button>
-        <Button variant="link" className="text-decoration-none text-black">
-          <RiEnglishInput size={20} />
+        <Button
+          variant="link"
+          onClick={toggleLocale}
+          className="text-decoration-none text-black"
+        >
+          <HiLanguage size={20} />
         </Button>
       </Nav>
       <Button

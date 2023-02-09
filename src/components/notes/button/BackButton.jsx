@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import LocaleContext from '../../../context/LocaleContext';
 
 function BackButton({ isArchive }) {
   let path = '/archived';
@@ -9,9 +10,13 @@ function BackButton({ isArchive }) {
     path = '/';
   }
 
+  const { locale } = React.useContext(LocaleContext);
+
   return (
     <Link to={path}>
-      <Button variant="outline-danger">Go Back !</Button>
+      <Button variant="outline-warning">
+        {locale === 'id' ? 'Kembali' : 'Go Back '}
+      </Button>
     </Link>
   );
 }

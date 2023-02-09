@@ -3,8 +3,11 @@ import { Card, Row } from 'react-bootstrap';
 import RegisterForm from '../../components/form/RegisterForm';
 import { Link, useNavigate } from 'react-router-dom';
 import { register } from '../../utils/api';
+import LocaleContext from '../../context/LocaleContext';
 
 function RegisterPage() {
+  const { locale } = React.useContext(LocaleContext);
+
   const navigate = useNavigate();
 
   async function onRegisterHandler(user) {
@@ -19,12 +22,16 @@ function RegisterPage() {
     <Row className="d-flex justify-content-center">
       <Card style={{ width: '30rem' }} className="shadow border-0 p-4 mt-5">
         <Card.Body className="my-5">
-          <Card.Title className="mb-4 text-center">Register Page</Card.Title>
+          <Card.Title className="mb-4 text-center">
+            {locale === 'id' ? 'Daftar Akun' : 'Register Account'}
+          </Card.Title>
           <RegisterForm register={onRegisterHandler} />
           <p>
-            Already have an account ?
+            {locale === 'id'
+              ? 'Sudah punya akun ? '
+              : 'Already have an account ? '}
             <Link to={'/'} className="text-decoration-none">
-              Login
+              {locale === 'id' ? 'Masuk' : 'Login'}
             </Link>
           </p>
         </Card.Body>
