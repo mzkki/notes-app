@@ -4,12 +4,19 @@ import { Navbar, Container } from 'react-bootstrap';
 import Navlink from './Navlink';
 import PropTypes, { string } from 'prop-types';
 import LocaleContext from '../../context/LocaleContext';
+import ModeContext from '../../context/ModeContext';
 
 function MyNavbar({ logout, authed }) {
   const { locale } = React.useContext(LocaleContext);
+  const { mode } = React.useContext(ModeContext);
 
   return (
-    <Navbar bg="light" className="shadow d-flex" sticky="top" expand="md">
+    <Navbar
+      bg={mode === 'light' ? 'light' : 'dark'}
+      className="shadow d-flex"
+      sticky="top"
+      expand="md"
+    >
       <Container>
         <Navbar.Brand>
           <Link to="/" className="text-decoration-none text-dark">

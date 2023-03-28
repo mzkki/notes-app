@@ -1,14 +1,16 @@
 import React from 'react';
 import { Nav, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { MdDarkMode } from 'react-icons/md';
+import { MdDarkMode, MdLightMode } from 'react-icons/md';
 import { HiLanguage } from 'react-icons/hi2';
 import PropTypes, { string } from 'prop-types';
 import LocaleContext from '../../context/LocaleContext';
+import ModeContext from '../../context/ModeContext';
 import Swal from 'sweetalert2';
 
 function Navlink({ authed, logout }) {
   const { locale, toggleLocale } = React.useContext(LocaleContext);
+  const { mode, toggleMode } = React.useContext(ModeContext);
 
   let inactiveClassName = 'text-decoration-none text-black m-2 text-muted';
   let activeClassName = 'text-decoration-none text-black m-2 ';
@@ -69,8 +71,16 @@ function Navlink({ authed, logout }) {
           style={{ maxHeight: '100px' }}
         ></Nav>
         <Nav className="d-flex">
-          <Button variant="link" className="text-decoration-none text-black">
-            <MdDarkMode size={20} />
+          <Button
+            variant="link"
+            onClick={toggleMode}
+            className="text-decoration-none text-black"
+          >
+            {mode === 'light' ? (
+              <MdLightMode size={20} />
+            ) : (
+              <MdDarkMode size={20} />
+            )}
           </Button>
           <Button
             variant="link"
