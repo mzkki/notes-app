@@ -77,9 +77,9 @@ function Navlink({ authed, logout }) {
             className="text-decoration-none text-black"
           >
             {mode === 'light' ? (
-              <MdLightMode size={20} />
-            ) : (
               <MdDarkMode size={20} />
+            ) : (
+              <MdLightMode size={20} color="white" />
             )}
           </Button>
           <Button
@@ -126,8 +126,16 @@ function Navlink({ authed, logout }) {
         </NavLink>
       </Nav>
       <Nav className="d-flex">
-        <Button variant="link" className="text-decoration-none text-black">
-          <MdDarkMode size={20} />
+        <Button
+          variant="link"
+          onClick={toggleMode}
+          className="text-decoration-none text-black"
+        >
+          {mode === 'light' ? (
+            <MdDarkMode size={20} />
+          ) : (
+            <MdLightMode size={20} color="white" />
+          )}
         </Button>
         <Button
           variant="link"

@@ -13,7 +13,15 @@ function SearchNote({ keyword, changeKeyword }) {
     <Navbar>
       <Container>
         <Navbar.Brand>
-          <h2>{currentPath === '/' ? 'Catatan' : 'Arsip'} </h2>
+          <h2>
+            {currentPath === '/'
+              ? locale === 'id'
+                ? 'Catatan'
+                : 'Active Notes'
+              : locale === 'id'
+              ? 'Arsip'
+              : 'Archived Notes'}{' '}
+          </h2>
         </Navbar.Brand>
         <Navbar.Collapse className="justify-content-end">
           <Form className="d-flex">
