@@ -12,16 +12,24 @@ import { getUserLogged, putAccessToken } from './utils/api';
 import DetailPage from './pages/notes/DetailPage';
 import NotFound from './pages/etc/NotFound';
 import LocaleContext from './context/LocaleContext';
+import ModeContext from './context/ModeContext';
 
 function App() {
   const [authedUser, setAuthedUser] = React.useState(null);
   const [initializing, setInitializing] = React.useState(true);
 
   const [locale, setLocale] = React.useState('id');
+  const [mode, setMode] = React.useState('light');
 
   const toggleLocale = () => {
     setLocale((prevLocale) => {
       return prevLocale === 'id' ? 'en' : 'id';
+    });
+  };
+
+  const toggleMode = () => {
+    setMode((prevMode) => {
+      return prevMode === 'light' ? 'dark' : 'light';
     });
   };
 
@@ -31,6 +39,13 @@ function App() {
       toggleLocale,
     };
   }, [locale]);
+
+  const modeContextValue = React.useMemo(() => {
+    return {
+      mode,
+      toggleMode,
+    };
+  }, [mode]);
 
   React.useEffect(() => {
     async function getData() {
@@ -59,37 +74,41 @@ function App() {
 
   if (authedUser === null) {
     return (
+      <ModeContext.Provider value={modeContextValue}>
+        <LocaleContext.Provider value={localeContextValue}>
+          <main>
+            <MyNavbar authed={authedUser} />
+            <Container className="notes-app mt-4">
+              <Routes>
+                <Route
+                  path="*"
+                  element={<LoginPage loginSuccess={onLoginSuccess} />}
+                />
+                <Route path="/register" element={<RegisterPage />} />
+              </Routes>
+            </Container>
+          </main>
+        </LocaleContext.Provider>
+      </ModeContext.Provider>
+    );
+  }
+  return (
+    <ModeContext.Provider value={modeContextValue}>
       <LocaleContext.Provider value={localeContextValue}>
         <main>
-          <MyNavbar authed={authedUser} />
+          <MyNavbar logout={onLogout} authed={authedUser} />
           <Container className="notes-app mt-4">
             <Routes>
-              <Route
-                path="*"
-                element={<LoginPage loginSuccess={onLoginSuccess} />}
-              />
-              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/" element={<Homepage />} />
+              <Route path="/archived" element={<Homepage />} />
+              <Route path="/note/:id" element={<DetailPage />} />
+              <Route path="/add" element={<AddNote />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Container>
         </main>
       </LocaleContext.Provider>
-    );
-  }
-  return (
-    <LocaleContext.Provider value={localeContextValue}>
-      <main>
-        <MyNavbar logout={onLogout} authed={authedUser} />
-        <Container className="notes-app mt-4">
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/archived" element={<Homepage />} />
-            <Route path="/note/:id" element={<DetailPage />} />
-            <Route path="/add" element={<AddNote />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Container>
-      </main>
-    </LocaleContext.Provider>
+    </ModeContext.Provider>
   );
 }
 
