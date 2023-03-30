@@ -19,15 +19,11 @@ function App() {
   const [authedUser, setAuthedUser] = React.useState(null);
   const [initializing, setInitializing] = React.useState(true);
 
-  const getCurrentTheme = () => {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  };
-
   const [locale, setLocale] = React.useState(
     localStorage.getItem('locale') || 'id'
   );
   const [mode, setMode] = React.useState(
-    localStorage.getItem('theme') || getCurrentTheme() ? 'dark' : 'light'
+    localStorage.getItem('theme') || 'light'
   );
 
   const toggleLocale = () => {
