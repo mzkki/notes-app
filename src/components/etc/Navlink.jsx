@@ -12,8 +12,15 @@ function Navlink({ authed, logout }) {
   const { locale, toggleLocale } = React.useContext(LocaleContext);
   const { mode, toggleMode } = React.useContext(ModeContext);
 
-  let inactiveClassName = 'text-decoration-none text-black m-2 text-muted';
-  let activeClassName = 'text-decoration-none text-black m-2 ';
+  let inactiveClassName = `text-decoration-none ${
+    mode === 'light' ? 'text-dark' : 'text-light'
+  } m-2 text-muted`;
+  let activeClassName = `text-decoration-none ${
+    mode === 'light' ? 'text-dark' : 'text-light'
+  } m-2 `;
+
+  const html = document.querySelector('html');
+  html.setAttribute('data-bs-theme', mode);
 
   function confirmLogout() {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -77,7 +84,7 @@ function Navlink({ authed, logout }) {
             className="text-decoration-none text-black"
           >
             {mode === 'light' ? (
-              <MdDarkMode size={20} />
+              <MdDarkMode size={20} color="black" />
             ) : (
               <MdLightMode size={20} color="white" />
             )}
@@ -87,7 +94,10 @@ function Navlink({ authed, logout }) {
             onClick={toggleLocale}
             className="text-decoration-none text-black"
           >
-            <HiLanguage size={20} />
+            <HiLanguage
+              size={20}
+              color={mode === 'light' ? 'black' : 'white'}
+            />
           </Button>
         </Nav>
       </>
@@ -140,17 +150,18 @@ function Navlink({ authed, logout }) {
         <Button
           variant="link"
           onClick={toggleLocale}
-          className="text-decoration-none text-black"
+          className="text-decoration-none"
         >
-          <HiLanguage size={20} />
+          <HiLanguage size={20} color={mode === 'light' ? 'black' : 'white'} />
         </Button>
       </Nav>
       <Button
         variant="link"
-        className="text-decoration-none text-black m-2"
+        className={`text-decoration-none ${
+          mode === 'light' ? 'text-dark' : 'text-light'
+        } m-2`}
         onClick={confirmLogout}
       >
-        {/* <BiArchive size={20} /> */}
         {authed.name}
       </Button>
     </>

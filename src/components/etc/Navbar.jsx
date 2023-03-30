@@ -11,15 +11,15 @@ function MyNavbar({ logout, authed }) {
   const { mode } = React.useContext(ModeContext);
 
   return (
-    <Navbar
-      bg={mode === 'light' ? 'light' : 'dark'}
-      className="shadow d-flex"
-      sticky="top"
-      expand="md"
-    >
+    <Navbar className="shadow d-flex" sticky="top" expand="md">
       <Container>
         <Navbar.Brand>
-          <Link to="/" className="text-decoration-none text-dark">
+          <Link
+            to="/"
+            className={`text-decoration-none ${
+              mode === 'light' ? 'text-dark' : 'text-light'
+            }`}
+          >
             <h4>{locale === 'id' ? 'Aplikasi Catatan' : 'Notes App'}</h4>
           </Link>
         </Navbar.Brand>
