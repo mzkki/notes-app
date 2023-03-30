@@ -18,18 +18,30 @@ function App() {
   const [authedUser, setAuthedUser] = React.useState(null);
   const [initializing, setInitializing] = React.useState(true);
 
-  const [locale, setLocale] = React.useState('id');
-  const [mode, setMode] = React.useState('light');
+  const getCurrentTheme = () => {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  };
+
+  const [locale, setLocale] = React.useState(
+    localStorage.getItem('locale') || 'id'
+  );
+  const [mode, setMode] = React.useState(
+    localStorage.getItem('theme') || getCurrentTheme() ? 'dark' : 'light'
+  );
 
   const toggleLocale = () => {
     setLocale((prevLocale) => {
-      return prevLocale === 'id' ? 'en' : 'id';
+      const newLocale = prevLocale === 'id' ? 'en' : 'id';
+      localStorage.setItem('locale', newLocale);
+      return newLocale;
     });
   };
 
   const toggleMode = () => {
     setMode((prevMode) => {
-      return prevMode === 'light' ? 'dark' : 'light';
+      const newTheme = prevMode === 'light' ? 'dark' : 'light';
+      localStorage.setItem('theme', newTheme);
+      return newTheme;
     });
   };
 
