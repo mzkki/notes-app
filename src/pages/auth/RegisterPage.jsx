@@ -4,6 +4,7 @@ import RegisterForm from '../../components/form/RegisterForm';
 import { Link, useNavigate } from 'react-router-dom';
 import { register } from '../../utils/api';
 import LocaleContext from '../../context/LocaleContext';
+import Swal from 'sweetalert2';
 
 function RegisterPage() {
   const { locale } = React.useContext(LocaleContext);
@@ -11,10 +12,16 @@ function RegisterPage() {
   const navigate = useNavigate();
 
   async function onRegisterHandler(user) {
-    const { error } = await register(user);
+    const { error, message } = await register(user);
 
     if (!error) {
       navigate('/');
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: message,
+      });
     }
   }
 

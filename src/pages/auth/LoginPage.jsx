@@ -5,15 +5,22 @@ import { Link } from 'react-router-dom';
 import { login } from '../../utils/api';
 import PropTypes from 'prop-types';
 import LocaleContext from '../../context/LocaleContext';
+import Swal from 'sweetalert2';
 
 function LoginPage({ loginSuccess }) {
   const { locale } = React.useContext(LocaleContext);
 
   async function onLogin({ email, password }) {
-    const { error, data } = await login({ email, password });
+    const { error, data, message } = await login({ email, password });
 
     if (!error) {
       loginSuccess(data);
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: message,
+      });
     }
   }
 
