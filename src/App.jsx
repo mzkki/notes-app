@@ -5,6 +5,7 @@ import LoginPage from './pages/auth/LoginPage';
 import RegisterPage from './pages/auth/RegisterPage';
 import './css/style.css';
 import './css/toast.css';
+import '@sweetalert2/themes/dark';
 import MyNavbar from './components/etc/Navbar';
 import Homepage from './pages/notes/Homepage';
 import AddNote from './pages/notes/AddNote';
